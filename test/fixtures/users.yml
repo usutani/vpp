@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_user_id_str: MyString
+  email: MyString
+  its_id_hash: MyString
+  status: MyString
+  user_id: 1
+
+two:
+  client_user_id_str: MyString
+  email: MyString
+  its_id_hash: MyString
+  status: MyString
+  user_id: 1

@@ -19,5 +19,8 @@ module Vpp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    path = File.join(Rails.root, "config", "from_apple_portal.vpptoken")
+    s_token = File.read(path)
+    config.vpp_client = AppleVPP::Client.new(s_token)
   end
 end
