@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def sync
-    resp = Vpp::Application.config.vpp_client.get_users
-    resp[:users].each do |vu|
+    Vpp::Application.config.vpp_client.get_users[:users].each do |vu|
       user = User.find_or_initialize_by(client_user_id_str: vu[:client_user_id_str])
       user.update(vu)
     end
