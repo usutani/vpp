@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     Vpp::Application.config.vpp_client.register_user(h.symbolize_keys)
 
     @user = User.new(user_params)
+    @user.client_user_id_str = h["client_user_id_str"]
 
     respond_to do |format|
       if @user.save

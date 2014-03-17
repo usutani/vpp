@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317013446) do
+ActiveRecord::Schema.define(version: 20140317054652) do
 
   create_table "users", force: true do |t|
     t.string   "client_user_id_str"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140317013446) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "invite_url"
+    t.string   "invite_code"
   end
 
 end
