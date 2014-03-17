@@ -32,6 +32,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    h = user_params.select { |key,_| vpp_user_key_filter.include? key }
+    h["client_user_id_str"] = SecureRandom.uuid
+    Vpp::Application.config.vpp_client.register_user(h.symbolize_keys)
+
     @user = User.new(user_params)
 
     respond_to do |format|
