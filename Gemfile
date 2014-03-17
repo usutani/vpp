@@ -45,3 +45,9 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'apple_vpp'
+
+group :development do
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
