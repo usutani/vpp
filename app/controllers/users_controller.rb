@@ -48,6 +48,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    filter= %w[client_user_id_str email]
+    h = user_params.select { |key,_| filter.include? key }
+    Vpp::Application.config.vpp_client.edit_user(h.symbolize_keys)
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
