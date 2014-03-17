@@ -11,18 +11,28 @@
 </p>
 
 <p>
-  <strong>Its id hash:</strong>
-  <%= @user.its_id_hash %>
-</p>
-
-<p>
   <strong>Status:</strong>
   <%= @user.status %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>User ID (VPP):</strong>
   <%= @user.user_id %>
+</p>
+
+<p>
+  <strong>Invite code:</strong>
+  <%= @user.invite_code %>
+</p>
+
+<p>
+  <strong>Invite URL:</strong>
+  <%= @user.invite_url %>
+</p>
+
+<p>
+  <strong>Its id hash:</strong>
+  <%= @user.its_id_hash %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
