@@ -13,23 +13,11 @@
 
   <div class="field">
     <%= f.label :client_user_id_str %><br>
-    <%= f.text_field :client_user_id_str %>
+    <%= f.text_field :client_user_id_str, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :its_id_hash %><br>
-    <%= f.text_field :its_id_hash %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
