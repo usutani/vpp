@@ -48,8 +48,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    filter= %w[client_user_id_str email]
-    h = user_params.select { |key,_| filter.include? key }
+    h = user_params.select { |key,_| vpp_user_key_filter.include? key }
     Vpp::Application.config.vpp_client.edit_user(h.symbolize_keys)
 
     respond_to do |format|
@@ -82,5 +81,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:client_user_id_str, :email, :its_id_hash, :status, :user_id)
+    end
+
+    def vpp_user_key_filter
+      filter= %w[client_user_id_str email]
     end
 end
