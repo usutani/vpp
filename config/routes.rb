@@ -1,4 +1,6 @@
 Vpp::Application.routes.draw do
+  root 'licenses#index'
+
   get 'licenses' => 'licenses#index'
   get 'licenses/sync' => 'licenses#sync', as: :sync_licenses
   get 'licenses/:id' => 'licenses#show', as: :license
