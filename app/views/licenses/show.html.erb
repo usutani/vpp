@@ -50,4 +50,20 @@
   <%= @license.client_user_id_str %>
 </p>
 
+<% if @license.status == "Available" %>
+<h2>利用者一覧</h2>
+<table>
+  <tbody>
+    <% User.all.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= link_to "割り当て" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<br/>
+
 <%= link_to '戻る', licenses_path %>
