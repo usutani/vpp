@@ -1,5 +1,5 @@
 class LicensesController < ApplicationController
-  before_action :set_license, only: [:show, :edit, :update, :destroy]
+  before_action :set_license, only: [:show]
 
   def sync
     Vpp::Application.config.vpp_client.get_licenses[:licenses].each do |vl|
@@ -15,41 +15,6 @@ class LicensesController < ApplicationController
 
   # GET /licenses/1
   def show
-  end
-
-  # GET /licenses/new
-  def new
-    @license = License.new
-  end
-
-  # GET /licenses/1/edit
-  def edit
-  end
-
-  # POST /licenses
-  def create
-    @license = License.new(license_params)
-
-    if @license.save
-      redirect_to @license, notice: 'License was successfully created.'
-    else
-      render action: 'new'
-    end
-  end
-
-  # PATCH/PUT /licenses/1
-  def update
-    if @license.update(license_params)
-      redirect_to @license, notice: 'License was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
-
-  # DELETE /licenses/1
-  def destroy
-    @license.destroy
-    redirect_to licenses_url, notice: 'License was successfully destroyed.'
   end
 
   private

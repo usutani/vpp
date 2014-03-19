@@ -14,8 +14,6 @@
       <th>Is irrevocable</th>
       <th>Client user id str</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -33,8 +31,6 @@
         <td><%= license.is_irrevocable %></td>
         <td><%= license.client_user_id_str %></td>
         <td><%= link_to 'Show', license %></td>
-        <td><%= link_to 'Edit', edit_license_path(license) %></td>
-        <td><%= link_to 'Destroy', license, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -43,4 +39,3 @@
 <br>
 
 <%= link_to 'VPPストアの情報と同期する', sync_licenses_path %>
-<%= link_to 'New License', new_license_path %>
