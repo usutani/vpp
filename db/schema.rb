@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317054652) do
+ActiveRecord::Schema.define(version: 20140319002456) do
+
+  create_table "licenses", force: true do |t|
+    t.integer  "license_id"
+    t.integer  "user_id"
+    t.integer  "adam_id"
+    t.integer  "product_type_id"
+    t.string   "its_id_hash"
+    t.string   "pricing_param"
+    t.string   "status"
+    t.string   "product_type_name"
+    t.boolean  "is_irrevocable"
+    t.string   "client_user_id_str"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "client_user_id_str"

@@ -1,4 +1,6 @@
 Vpp::Application.routes.draw do
+  resources :licenses
+
   resources :users do
     collection do
       get 'sync'

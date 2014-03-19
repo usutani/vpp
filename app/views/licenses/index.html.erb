@@ -1,0 +1,45 @@
+<h1>Listing licenses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>License</th>
+      <th>User</th>
+      <th>Adam</th>
+      <th>Product type</th>
+      <th>Its id hash</th>
+      <th>Pricing param</th>
+      <th>Status</th>
+      <th>Product type name</th>
+      <th>Is irrevocable</th>
+      <th>Client user id str</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @licenses.each do |license| %>
+      <tr>
+        <td><%= license.license_id %></td>
+        <td><%= license.user_id %></td>
+        <td><%= license.adam_id %></td>
+        <td><%= license.product_type_id %></td>
+        <td><%= license.its_id_hash %></td>
+        <td><%= license.pricing_param %></td>
+        <td><%= license.status %></td>
+        <td><%= license.product_type_name %></td>
+        <td><%= license.is_irrevocable %></td>
+        <td><%= license.client_user_id_str %></td>
+        <td><%= link_to 'Show', license %></td>
+        <td><%= link_to 'Edit', edit_license_path(license) %></td>
+        <td><%= link_to 'Destroy', license, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New License', new_license_path %>
