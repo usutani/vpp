@@ -41,8 +41,8 @@
 </p>
 
 <p>
-  <strong>返却不可:</strong>
-  <%= @license.is_irrevocable %>
+  <strong>返却可能:</strong>
+  <%= !@license.is_irrevocable %>
 </p>
 
 <p>
