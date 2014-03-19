@@ -4,6 +4,7 @@ Vpp::Application.routes.draw do
   get 'licenses' => 'licenses#index'
   get 'licenses/sync' => 'licenses#sync', as: :sync_licenses
   get 'licenses/:id' => 'licenses#show', as: :license
+  get 'licenses/:id/associate/:user_id' => 'licenses#associate'
 
   resources :users do
     collection do

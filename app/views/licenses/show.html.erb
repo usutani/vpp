@@ -57,7 +57,7 @@
     <% User.all.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= link_to "割り当て" %></td>
+        <td><%= link_to "割り当て", controller: 'licenses', action: 'associate', user_id: user.id %></td>
       </tr>
     <% end %>
   </tbody>
