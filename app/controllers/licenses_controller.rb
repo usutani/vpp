@@ -1,6 +1,14 @@
 class LicensesController < ApplicationController
   before_action :set_license, only: [:show, :edit, :update, :destroy]
 
+  def sync
+    Vpp::Application.config.vpp_client.get_licenses[:licenses].each do |vl|
+      l = License.find_or_initialize_by(license_id: vl[:license_id])
+      l.update(vl)
+    end
+    redirect_to action: 'index'
+  end
+
   # GET /licenses
   def index
     @licenses = License.all
