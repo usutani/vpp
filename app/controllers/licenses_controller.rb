@@ -3,8 +3,7 @@ class LicensesController < ApplicationController
 
   def sync
     Vpp::Application.config.vpp_client.get_licenses[:licenses].each do |vl|
-      l = License.find_or_initialize_by(license_id: vl[:license_id])
-      l.update(vl)
+      License.find_or_initialize_by(license_id: vl[:license_id]).update(vl)
     end
     redirect_to action: 'index'
   end
