@@ -1,18 +1,14 @@
-<h1>Listing licenses</h1>
+<h1>ライセンス一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>License</th>
-      <th>User</th>
-      <th>Adam</th>
-      <th>Product type</th>
-      <th>Its id hash</th>
-      <th>Pricing param</th>
-      <th>Status</th>
-      <th>Product type name</th>
-      <th>Is irrevocable</th>
-      <th>Client user id str</th>
+      <th>ライセンスID</th>
+      <th>iTSアプリID</th>
+      <th>状態</th>
+      <th>製品種別</th>
+      <th>返却不可</th>
+      <th>利用者ID</th>
       <th></th>
     </tr>
   </thead>
@@ -21,16 +17,12 @@
     <% @licenses.each do |license| %>
       <tr>
         <td><%= license.license_id %></td>
-        <td><%= license.user_id %></td>
         <td><%= license.adam_id %></td>
-        <td><%= license.product_type_id %></td>
-        <td><%= license.its_id_hash %></td>
-        <td><%= license.pricing_param %></td>
         <td><%= license.status %></td>
         <td><%= license.product_type_name %></td>
         <td><%= license.is_irrevocable %></td>
         <td><%= license.client_user_id_str %></td>
-        <td><%= link_to 'Show', license %></td>
+        <td><%= link_to '詳細', license %></td>
       </tr>
     <% end %>
   </tbody>
