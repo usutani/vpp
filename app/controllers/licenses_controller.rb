@@ -26,6 +26,13 @@ class LicensesController < ApplicationController
     redirect_to action: 'index'
   end
 
+  # GET /licenses/1/disassociate
+  def disassociate
+    license_id = License.find(params[:id]).license_id
+    Vpp::Application.config.vpp_client.disassociate_license_from_user(license_id: license_id)
+    redirect_to action: 'index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_license
