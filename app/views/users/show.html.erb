@@ -35,5 +35,18 @@
   <%= @user.its_id_hash %>
 </p>
 
+<h2>ライセンス一覧</h2>
+<table>
+  <tbody>
+    <tr>
+      <% @user.licenses.each do |license| %>
+        <td><%= link_to "#{license.adam_id}", "https://itunes.apple.com/jp/app/id#{license.adam_id}?mt=8", target: "_blank" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
