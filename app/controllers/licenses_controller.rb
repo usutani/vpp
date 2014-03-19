@@ -20,17 +20,18 @@ class LicensesController < ApplicationController
 
   # GET /licenses/1/associate/1
   def associate
+    user_id = User.find(params[:user_id]).user_id
     license_id = License.find(params[:id]).license_id
-    h = {user_id: params[:user_id], license_id: license_id}
+    h = {user_id: user_id, license_id: license_id}
     Vpp::Application.config.vpp_client.associate_license_with_user(h)
-    redirect_to action: 'index'
+    redirect_to action: 'sync'
   end
 
   # GET /licenses/1/disassociate
   def disassociate
     license_id = License.find(params[:id]).license_id
     Vpp::Application.config.vpp_client.disassociate_license_from_user(license_id: license_id)
-    redirect_to action: 'index'
+    redirect_to action: 'sync'
   end
 
   private
