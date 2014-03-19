@@ -40,7 +40,7 @@
   <tbody>
     <tr>
       <% @user.licenses.each do |license| %>
-        <td><%= link_to "#{license.adam_id}", "https://itunes.apple.com/jp/app/id#{license.adam_id}?mt=8", target: "_blank" %></td>
+        <td><%= link_to "#{license.adam_id}", its_jp_app_url(license.adam_id), target: "_blank" %></td>
       <% end %>
     </tr>
   </tbody>
