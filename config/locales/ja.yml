@@ -199,6 +199,8 @@ ja:
   activerecord:
     models:
       user: 利用者
+      license: ライセンス
+      content: コンテンツ
     attributes:
       user:
         client_user_id_str: 利用者ID
@@ -208,5 +210,19 @@ ja:
         invite_code: 招待コード
         invite_url: 招待URL
         its_id_hash: iTSハッシュ
+      license:
+        license_id: ライセンスID
+        user_id: VPPストア利用者ID
+        adam_id: コンテンツID
+        product_type_id: 製品種ID
+        its_id_hash: iTSIDハッシュ
+        pricing_param: 価格区分
+        status: 状態
+        product_type_name: 製品型名
+        is_irrevocable: 取消不能
+        is_revocable: 取消可能
+        client_user_id_str: 利用者ID
+      content:
+        name: コンテンツ名
     errors:
       <<: *errors

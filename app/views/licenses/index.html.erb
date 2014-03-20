@@ -3,12 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>ライセンスID</th>
-      <th>コンテンツ名</th>
-      <th>状態</th>
-      <th>製品種別</th>
-      <th>返却可能</th>
-      <th>利用者</th>
+      <th><%= License.human_attribute_name 'client_user_id_str' %></th>
+      <th><%= Content.human_attribute_name 'name' %></th>
+      <th><%= License.human_attribute_name 'status' %></th>
+      <th><%= License.human_attribute_name 'product_type_name' %></th>
+      <th><%= License.human_attribute_name 'is_revocable' %></th>
+      <th><%= User.model_name.human %></th>
       <th></th>
       <th></th>
     </tr>
