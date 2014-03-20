@@ -4,7 +4,9 @@ class LicensesController < ApplicationController
   def sync
     License.delete_all
     Vpp::Application.config.vpp_client.get_licenses[:licenses].each do |vl|
-      License.find_or_initialize_by(license_id: vl[:license_id]).update(vl)
+      l = License.find_or_initialize_by(license_id: vl[:license_id])
+      l.update(vl)
+      l.prepare_content
     end
     redirect_to action: 'index'
   end
