@@ -1,37 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Client user id str:</strong>
+  <strong><%= User.human_attribute_name 'client_user_id_str' %></strong>
   <%= @user.client_user_id_str %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong><%= User.human_attribute_name 'email' %></strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong><%= User.human_attribute_name 'status' %></strong>
   <%= @user.status %>
 </p>
 
 <p>
-  <strong>User ID (VPP):</strong>
+  <strong><%= User.human_attribute_name 'user_id' %></strong>
   <%= @user.user_id %>
 </p>
 
 <p>
-  <strong>Invite code:</strong>
+  <strong><%= User.human_attribute_name 'invite_code' %></strong>
   <%= @user.invite_code %>
 </p>
 
 <p>
-  <strong>Invite URL:</strong>
+  <strong><%= User.human_attribute_name 'invite_url' %></strong>
   <%= @user.invite_url %>
 </p>
 
 <p>
-  <strong>Its id hash:</strong>
+  <strong><%= User.human_attribute_name 'its_id_hash' %></strong>
   <%= @user.its_id_hash %>
 </p>
 
@@ -48,5 +48,5 @@
 
 <br/>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to '編集', edit_user_path(@user) %> |
+<%= link_to '戻る', users_path %>
