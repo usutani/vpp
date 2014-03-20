@@ -38,11 +38,11 @@
 <h2>ライセンス一覧</h2>
 <table>
   <tbody>
-    <tr>
-      <% @user.licenses.each do |license| %>
+    <% @user.licenses.each do |license| %>
+      <tr>
         <td><%= link_to "#{license.adam_id}", its_jp_app_url(license.adam_id), target: "_blank" %></td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
