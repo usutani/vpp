@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>ライセンスID</th>
-      <th>iTSアプリID</th>
+      <th>コンテンツ名</th>
       <th>状態</th>
       <th>製品種別</th>
       <th>返却可能</th>
@@ -18,7 +18,7 @@
     <% @licenses.each do |license| %>
       <tr>
         <td><%= license.license_id %></td>
-        <td><%= link_to "#{license.adam_id}", its_jp_app_url(license.adam_id), target: "_blank" %></td>
+        <td><%= link_to "#{license.content.try(:name)}", its_jp_app_url(license.adam_id), target: "_blank" %></td>
         <td><%= license.status %></td>
         <td><%= license.product_type_name %></td>
         <td><%= !license.is_irrevocable %></td>
