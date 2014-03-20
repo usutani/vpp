@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :client_user_id_str %><br>
+    <%= f.label User.human_attribute_name 'client_user_id_str' %><br>
     <%= f.text_field :client_user_id_str, readonly: true %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label User.human_attribute_name 'email' %><br>
     <%= f.text_field :email %>
   </div>
   <div class="actions">

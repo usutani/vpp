@@ -3,12 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>ライセンスID</th>
-      <th>コンテンツ名</th>
-      <th>状態</th>
-      <th>製品種別</th>
-      <th>返却可能</th>
-      <th>利用者</th>
+      <th><%= License.human_attribute_name 'client_user_id_str' %></th>
+      <th><%= Content.human_attribute_name 'name' %></th>
+      <th><%= License.human_attribute_name 'status' %></th>
+      <th><%= License.human_attribute_name 'product_type_name' %></th>
+      <th><%= License.human_attribute_name 'is_revocable' %></th>
+      <th><%= User.model_name.human %></th>
       <th></th>
       <th></th>
     </tr>
@@ -24,7 +24,7 @@
         <td><%= !license.is_irrevocable %></td>
         <td><%= link_to license.user.email, license.user if license.user.present? %></td>
         <td><%= link_to '詳細', license %></td>
-        <td><%= link_to '割り当て解除', controller: 'licenses', action: 'disassociate', id: license.id if license.status == "Associated" %></td>
+        <td><%= link_to '割り当て解除', {controller: 'licenses', action: 'disassociate', id: license.id}, confirm: 'よろしいですか？' if license.status == "Associated" %></td>
       </tr>
     <% end %>
   </tbody>

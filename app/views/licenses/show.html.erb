@@ -1,47 +1,47 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>ライセンスID:</strong>
+  <strong><%= License.human_attribute_name 'license_id' %></strong>
   <%= @license.license_id %>
 </p>
 
 <p>
-  <strong>VPPストア利用者ID:</strong>
+  <strong><%= License.human_attribute_name 'user_id' %></strong>
   <%= @license.user_id %>
 </p>
 
 <p>
-  <strong>iTSアプリID(Adam):</strong>
+  <strong><%= License.human_attribute_name 'adam_id' %></strong>
   <%= @license.adam_id %>
 </p>
 
 <p>
-  <strong>種別:</strong>
+  <strong><%= License.human_attribute_name 'product_type_id' %></strong>
   <%= @license.product_type_id %>
 </p>
 
 <p>
-  <strong>iTS ID ハッシュ:</strong>
+  <strong><%= License.human_attribute_name 'its_id_hash' %></strong>
   <%= @license.its_id_hash %>
 </p>
 
 <p>
-  <strong>価格区分:</strong>
+  <strong><%= License.human_attribute_name 'pricing_param' %></strong>
   <%= @license.pricing_param %>
 </p>
 
 <p>
-  <strong>状態:</strong>
+  <strong><%= License.human_attribute_name 'status' %></strong>
   <%= @license.status %>
 </p>
 
 <p>
-  <strong>製品種別:</strong>
+  <strong><%= License.human_attribute_name 'product_type_name' %></strong>
   <%= @license.product_type_name %>
 </p>
 
 <p>
-  <strong>返却可能:</strong>
+  <strong><%= License.human_attribute_name 'is_revocable' %></strong>
   <%= !@license.is_irrevocable %>
 </p>
 
