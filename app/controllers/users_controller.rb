@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     h = user_params.select { |key,_| vpp_user_key_filter.include? key }
+    h["client_user_id_str"] = @user.client_user_id_str
     Vpp::Application.config.vpp_client.edit_user(h.symbolize_keys)
 
     if @user.update(user_params)
