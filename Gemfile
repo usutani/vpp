@@ -46,7 +46,6 @@ end
 
 gem 'apple_vpp'
 
-
 group :development do
   gem 'pry-rails'
   gem 'better_errors'
