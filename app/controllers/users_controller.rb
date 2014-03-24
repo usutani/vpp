@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:invite, :show, :edit, :update, :destroy]
+
+  def invite
+    mail = UserMailer.invite(@user)
+    mail.transport_encoding = "8bit"
+    mail.deliver
+    redirect_to action: 'index'
+  end
 
   def sync
     User.delete_all
