@@ -46,6 +46,8 @@ end
 
 gem 'apple_vpp'
 
+gem 'therubyracer'
+
 group :development do
   gem 'pry-rails'
   gem 'better_errors'
