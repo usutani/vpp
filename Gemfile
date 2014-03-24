@@ -45,6 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'apple_vpp'
+gem 'validates_email_format_of'
 
 group :development do
   gem 'pry-rails'

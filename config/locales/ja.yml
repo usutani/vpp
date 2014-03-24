@@ -226,3 +226,6 @@ ja:
         name: コンテンツ名
     errors:
       <<: *errors
+  user_mailer:
+    invite:
+      subject: 【VPP支援サービス】ライセンス利用グループへのご招待

@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:invite, :show, :edit, :update, :destroy]
+
+  def invite
+    mail = UserMailer.invite(@user)
+    mail.transport_encoding = "8bit"
+    mail.deliver
+    redirect_to action: 'index'
+  end
 
   def sync
     User.delete_all
@@ -47,6 +54,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     h = user_params.select { |key,_| vpp_user_key_filter.include? key }
+    h["client_user_id_str"] = @user.client_user_id_str
     Vpp::Application.config.vpp_client.edit_user(h.symbolize_keys)
 
     if @user.update(user_params)
