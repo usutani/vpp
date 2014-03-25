@@ -1,3 +1,4 @@
+# coding: utf-8
 class UsersController < ApplicationController
   before_action :set_user, only: [:invite, :show, :edit, :update, :destroy]
 
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
     @user.client_user_id_str = h["client_user_id_str"]
 
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user, notice: '利用者を作成しました'
     else
       render action: 'new'
     end
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
     Vpp::Application.config.vpp_client.edit_user(h.symbolize_keys)
 
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: '利用者を更新しました'
     else
       render action: 'edit'
     end
