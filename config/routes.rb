@@ -6,6 +6,7 @@ Vpp::Application.routes.draw do
   get 'licenses/:id' => 'licenses#show', as: :license
   get 'licenses/:id/associate/:user_id' => 'licenses#associate'
   get 'licenses/:id/disassociate' => 'licenses#disassociate'
+  get 'licenses/:id/notify' => 'licenses#notify', as: :notify_license
 
   resources :users do
     collection do
