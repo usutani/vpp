@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th><%= User.human_attribute_name 'client_user_id_str' %></th>
       <th><%= User.human_attribute_name 'email' %></th>
       <th><%= User.human_attribute_name 'status' %></th>
       <th></th>
@@ -16,7 +15,6 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.client_user_id_str %></td>
         <td><%= user.email %></td>
         <td><%= user.status %></td>
         <td><%= link_to '詳細', user %></td>
