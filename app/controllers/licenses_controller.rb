@@ -39,6 +39,9 @@ class LicensesController < ApplicationController
 
   # GET /licenses/1/notify
   def notify
+    mail = UserMailer.notify(@license)
+    mail.transport_encoding = "8bit"
+    mail.deliver
     redirect_to action: 'index'
   end
 
