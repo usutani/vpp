@@ -2,8 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  $("div#sync_users").on 'click', (event) ->
-    $("div#sync_users").append("<progress/>")
+  $("div.sync").click ->
+    $("div.sync a").empty()
+    $("div.sync").append("<progress/>")
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
