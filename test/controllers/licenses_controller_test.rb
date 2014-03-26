@@ -13,12 +13,14 @@ class LicensesControllerTest < ActionController::TestCase
   end
 
   test "should associate license with user" do
-    Vpp::Application.config.vpp_client.stubs(:associate_license_with_user)
+    h = { user_id: @user.user_id, license_id: @license.license_id }
+    Vpp::Application.config.vpp_client.expects(:associate_license_with_user).with(h)
     get :associate, id: @license, user_id: @user
   end
 
   test "should disassociate license from user" do
-    Vpp::Application.config.vpp_client.stubs(:disassociate_license_from_user)
+    h = { license_id: @license.license_id }
+    Vpp::Application.config.vpp_client.expects(:disassociate_license_from_user).with(h)
     get :disassociate, id: @license
   end
 
