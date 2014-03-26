@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  $("div.sync").click ->
+  $("div.sync a").click ->
+    return if $("div.sync a progress").size()
     $("div.sync a").empty()
     $("div.sync").append("<progress/>")
 
