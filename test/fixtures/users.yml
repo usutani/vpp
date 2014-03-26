@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  client_user_id_str: MyString
-  email: MyString
+  client_user_id_str: "001"
+  email: one@example.com
   its_id_hash: MyString
   status: MyString
   user_id: 1
 
 two:
-  client_user_id_str: MyString
-  email: MyString
+  client_user_id_str: "002"
+  email: two@example.com
   its_id_hash: MyString
   status: MyString
-  user_id: 1
+  user_id: 2
