@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :licenses, primary_key: "user_id"
   validates :client_user_id_str, uniqueness: true
   validates :email, email_format: {message: ' メールアドレスの形式が不適切です'}
+  validates :email, presence: true, uniqueness: true
 
   before_create do
     self.client_user_id_str ||= SecureRandom.uuid

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320004109) do
+ActiveRecord::Schema.define(version: 20140326085347) do
 
   create_table "contents", force: true do |t|
     t.integer  "adam_id"
@@ -46,5 +46,7 @@ ActiveRecord::Schema.define(version: 20140320004109) do
     t.string   "invite_url"
     t.string   "invite_code"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
