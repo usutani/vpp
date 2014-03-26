@@ -38,12 +38,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    h = user_params.select { |key,_| vpp_user_key_filter.include? key }
-    h["client_user_id_str"] = SecureRandom.uuid
-    Vpp::Application.config.vpp_client.register_user(h.symbolize_keys)
-
     @user = User.new(user_params)
-    @user.client_user_id_str = h["client_user_id_str"]
 
     if @user.save
       redirect_to @user, notice: '利用者を作成しました'

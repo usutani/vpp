@@ -4,6 +4,17 @@ class User < ActiveRecord::Base
   validates :client_user_id_str, uniqueness: true
   validates :email, email_format: {message: ' メールアドレスの形式が不適切です'}
 
+  before_create do
+    self.client_user_id_str ||= SecureRandom.uuid
+  end
+
+  after_create do
+    h = { client_user_id_str: self.client_user_id_str, email: self.email }
+    Vpp::Application.config.vpp_client.register_user(h)
+    #binding.pry
+    #raise Exception.new("CRASH")
+  end
+
   def can_invite?
     status == "Registered"
   end
