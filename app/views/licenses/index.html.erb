@@ -8,6 +8,7 @@
       <th><%= User.model_name.human %></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,7 +19,8 @@
         <td><%= license.status %></td>
         <td><%= link_to license.user.email, license.user if license.user.present? %></td>
         <td><%= link_to '詳細', license %></td>
-        <td><%= link_to '割り当て解除', {controller: 'licenses', action: 'disassociate', id: license.id}, confirm: 'よろしいですか？' if license.status == "Associated" %></td>
+        <td><%= link_to '割り当て解除', {controller: 'licenses', action: 'disassociate', id: license.id}, confirm: 'よろしいですか？' if license.associated? %></td>
+        <td><%= link_to 'ダウンロード先をメールする', notify_license_path(license) if license.associated? %></td>
       </tr>
     <% end %>
   </tbody>

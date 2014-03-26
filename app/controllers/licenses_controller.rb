@@ -1,6 +1,7 @@
 class LicensesController < ApplicationController
-  before_action :set_license, only: [:show]
+  before_action :set_license, only: [:show, :notify]
 
+  # GET /licenses/sync
   def sync
     License.delete_all
     Vpp::Application.config.vpp_client.get_licenses[:licenses].each do |vl|
@@ -34,6 +35,14 @@ class LicensesController < ApplicationController
     license_id = License.find(params[:id]).license_id
     Vpp::Application.config.vpp_client.disassociate_license_from_user(license_id: license_id)
     redirect_to action: 'sync'
+  end
+
+  # GET /licenses/1/notify
+  def notify
+    mail = UserMailer.notify(@license)
+    mail.transport_encoding = "8bit"
+    mail.deliver
+    redirect_to action: 'index'
   end
 
   private
