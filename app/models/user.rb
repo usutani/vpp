@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
     #raise Exception.new("CRASH")
   end
 
+  after_update do
+    h = { client_user_id_str: self.client_user_id_str, email: self.email }
+    Vpp::Application.config.vpp_client.edit_user(h)
+  end
+
   def can_invite?
     status == "Registered"
   end

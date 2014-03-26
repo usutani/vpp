@@ -49,10 +49,6 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    h = user_params.select { |key,_| vpp_user_key_filter.include? key }
-    h["client_user_id_str"] = @user.client_user_id_str
-    Vpp::Application.config.vpp_client.edit_user(h.symbolize_keys)
-
     if @user.update(user_params)
       redirect_to @user, notice: '利用者を更新しました'
     else
@@ -77,9 +73,5 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:client_user_id_str, :email, :its_id_hash, :status, :user_id)
-    end
-
-    def vpp_user_key_filter
-      filter= %w[client_user_id_str email]
     end
 end
