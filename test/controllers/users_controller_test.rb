@@ -17,8 +17,9 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should create user" do
+    Vpp::Application.config.vpp_client.stubs(:register_user)
     assert_difference('User.count') do
-      post :create, user: { client_user_id_str: @user.client_user_id_str, email: @user.email, its_id_hash: @user.its_id_hash, status: @user.status, user_id: @user.user_id }
+      post :create, user: { email: @user.email }
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -35,11 +36,13 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
+    Vpp::Application.config.vpp_client.stubs(:edit_user)
     patch :update, id: @user, user: { client_user_id_str: @user.client_user_id_str, email: @user.email, its_id_hash: @user.its_id_hash, status: @user.status, user_id: @user.user_id }
     assert_redirected_to user_path(assigns(:user))
   end
 
   test "should destroy user" do
+    Vpp::Application.config.vpp_client.stubs(:retire_user)
     assert_difference('User.count', -1) do
       delete :destroy, id: @user
     end

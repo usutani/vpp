@@ -38,12 +38,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    h = user_params.select { |key,_| vpp_user_key_filter.include? key }
-    h["client_user_id_str"] = SecureRandom.uuid
-    Vpp::Application.config.vpp_client.register_user(h.symbolize_keys)
-
     @user = User.new(user_params)
-    @user.client_user_id_str = h["client_user_id_str"]
 
     if @user.save
       redirect_to @user, notice: '利用者を作成しました'
@@ -54,10 +49,6 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    h = user_params.select { |key,_| vpp_user_key_filter.include? key }
-    h["client_user_id_str"] = @user.client_user_id_str
-    Vpp::Application.config.vpp_client.edit_user(h.symbolize_keys)
-
     if @user.update(user_params)
       redirect_to @user, notice: '利用者を更新しました'
     else
@@ -67,8 +58,6 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    Vpp::Application.config.vpp_client.retire_user(client_user_id_str: @user.client_user_id_str)
-
     @user.destroy
     redirect_to users_url
   end
@@ -82,9 +71,5 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:client_user_id_str, :email, :its_id_hash, :status, :user_id)
-    end
-
-    def vpp_user_key_filter
-      filter= %w[client_user_id_str email]
     end
 end
