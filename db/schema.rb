@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326085347) do
+ActiveRecord::Schema.define(version: 20140326100340) do
 
   create_table "contents", force: true do |t|
     t.integer  "adam_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20140326085347) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "contents", ["adam_id"], name: "index_contents_on_adam_id", unique: true
 
   create_table "licenses", force: true do |t|
     t.integer  "license_id"
@@ -35,6 +37,10 @@ ActiveRecord::Schema.define(version: 20140326085347) do
     t.datetime "updated_at"
   end
 
+  add_index "licenses", ["adam_id"], name: "index_licenses_on_adam_id"
+  add_index "licenses", ["license_id"], name: "index_licenses_on_license_id", unique: true
+  add_index "licenses", ["user_id"], name: "index_licenses_on_user_id"
+
   create_table "users", force: true do |t|
     t.string   "client_user_id_str"
     t.string   "email"
@@ -47,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140326085347) do
     t.string   "invite_code"
   end
 
+  add_index "users", ["client_user_id_str"], name: "index_users_on_client_user_id_str", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["user_id"], name: "index_users_on_user_id", unique: true
 
 end
