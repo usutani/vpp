@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  add_template_helper(ApplicationHelper)
   default from: "vpp.sender@gmail.com"
 
   def invite(user)
