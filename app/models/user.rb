@@ -20,6 +20,11 @@ class User < ActiveRecord::Base
     Vpp::Application.config.vpp_client.edit_user(h)
   end
 
+  after_destroy do
+    h = { client_user_id_str: self.client_user_id_str }
+    Vpp::Application.config.vpp_client.retire_user(h)
+  end
+
   def can_invite?
     status == "Registered"
   end

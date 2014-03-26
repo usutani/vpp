@@ -58,8 +58,6 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    Vpp::Application.config.vpp_client.retire_user(client_user_id_str: @user.client_user_id_str)
-
     @user.destroy
     redirect_to users_url
   end
