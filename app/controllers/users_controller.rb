@@ -40,9 +40,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      redirect_to @user, notice: '利用者を登録しました'
-    else
+    begin
+      if @user.save
+        redirect_to @user, notice: '利用者を登録しました'
+      else
+        render action: 'new'
+      end
+    rescue => e
+      @user.errors.add :base, e.message
       render action: 'new'
     end
   end

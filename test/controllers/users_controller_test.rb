@@ -26,6 +26,15 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to user_path(assigns(:user))
   end
 
+  test "create user error" do
+    Vpp::Application.config.vpp_client.stubs(:register_user).raises(AppleVPP::Error::Code9603)
+    User.stubs(:create).raises(AppleVPP::Error::Code9603) do
+      post :create, user: { email: "baz@example.com" }
+    end
+
+    assert_response :success
+  end
+
   test "should show user" do
     get :show, id: @user
     assert_response :success
