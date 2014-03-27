@@ -1,13 +1,23 @@
+# coding: utf-8
 class LicensesController < ApplicationController
   before_action :set_license, only: [:show, :notify]
 
   # GET /licenses/sync
   def sync
-    License.delete_all
-    Vpp::Application.config.vpp_client.get_licenses[:licenses].each do |vl|
-      l = License.find_or_initialize_by(license_id: vl[:license_id])
-      l.update(vl)
-      l.prepare_content
+    ActiveRecord::Base.transaction do
+      License.delete_all
+      begin
+        licenses = Vpp::Application.config.vpp_client.get_licenses[:licenses]
+      rescue => e
+        flash[:notice] = '同期に失敗しました'
+        raise ActiveRecord::Rollback
+      end
+      licenses.each do |vl|
+        l = License.find_or_initialize_by(license_id: vl[:license_id])
+        l.update(vl)
+        l.prepare_content
+      end
+      flash[:notice] = 'VPPストア情報と同期しました'
     end
     redirect_to action: 'index'
   end
