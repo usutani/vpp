@@ -51,6 +51,15 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to user_path(assigns(:user))
   end
 
+  test "update user error" do
+    Vpp::Application.config.vpp_client.stubs(:edit_user).raises(AppleVPP::Error::Code9603)
+    User.stubs(:create).raises(AppleVPP::Error::Code9603) do
+      patch :update, id: @user, user: { client_user_id_str: @user.client_user_id_str, email: @user.email, its_id_hash: @user.its_id_hash, status: @user.status, user_id: @user.user_id }
+    end
+
+    assert_response :success
+  end
+
   test "should destroy user" do
     Vpp::Application.config.vpp_client.stubs(:retire_user)
     assert_difference('User.count', -1) do
