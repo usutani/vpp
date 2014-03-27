@@ -10,10 +10,19 @@ class UsersController < ApplicationController
   end
 
   def sync
-    User.delete_all
-    Vpp::Application.config.vpp_client.get_users[:users].each do |vu|
-      user = User.find_or_initialize_by(client_user_id_str: vu[:client_user_id_str])
-      user.update(vu)
+    ActiveRecord::Base.transaction do
+      User.delete_all
+      begin
+        users = Vpp::Application.config.vpp_client.get_users[:users]
+      rescue => e
+        flash[:notice] = '同期に失敗しました'
+        raise ActiveRecord::Rollback
+      end
+      users.each do |vu|
+        user = User.find_or_initialize_by(client_user_id_str: vu[:client_user_id_str])
+        user.update(vu)
+      end
+      flash[:notice] = 'VPPストア情報と同期しました'
     end
     redirect_to action: 'index'
   end
