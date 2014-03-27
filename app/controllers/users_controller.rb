@@ -68,8 +68,13 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user.destroy
-    redirect_to users_url
+    begin
+      @user.destroy
+      redirect_to users_url
+    rescue => e
+      #flash[:notice] = e.message
+      redirect_to users_url, notice: e.message
+    end
   end
 
   private
