@@ -26,8 +26,12 @@ class LicensesController < ApplicationController
     user_id = User.find(params[:user_id]).user_id
     license_id = License.find(params[:id]).license_id
     h = {user_id: user_id, license_id: license_id}
-    Vpp::Application.config.vpp_client.associate_license_with_user(h)
-    redirect_to action: 'sync'
+    begin
+      Vpp::Application.config.vpp_client.associate_license_with_user(h)
+      redirect_to action: 'sync'
+    rescue => e
+      redirect_to license_path, notice: e.message
+    end
   end
 
   # GET /licenses/1/disassociate
