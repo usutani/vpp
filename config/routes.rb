@@ -1,4 +1,5 @@
 Vpp::Application.routes.draw do
+  get "static_pages/invitation_mail"
   root 'licenses#index'
 
   get 'licenses' => 'licenses#index'
