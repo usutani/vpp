@@ -8,8 +8,17 @@
 </head>
 <body>
 
-<%= link_to '利用者一覧', users_path %>
-<%= link_to 'ライセンス一覧', licenses_path %>
+<header class="global_header">
+  <logo></logo>
+  <current_user></current_user>
+</header>
+
+<header class="local_header">
+  <ul class="tabnav">
+    <li class="tabnav selected"><%= link_to '利用者一覧', users_path %></li>
+    <li class="tabnav"><%= link_to 'ライセンス一覧', licenses_path %></li>
+  </ul>
+</header>
 
 <%= yield %>
 
