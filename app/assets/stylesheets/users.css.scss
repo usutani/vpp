@@ -1,9 +1,11 @@
+$border-color: rgba(229,229,229,1.0);
+
 header {
   margin: 0px;
   padding: 0px;
   &.global_header {
     background-color: rgba(249,249,249,1.0);
-    border-bottom-color: rgba(229,229,229,1.0);
+    border-bottom-color: $border-color;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     height: 40px;
@@ -13,23 +15,26 @@ header {
     border-bottom-color: rgba(229,229,229,1.0);
     border-bottom-style: solid;
     border-bottom-width: 2px;
-    height: 36px;
+    border-bottom-color: $border-color;
   }
 }
 
 ul {
   &.tabnav {
     margin: 0px;
-    padding: 0px;
-    padding-left: 20px;
+    padding: 0px 0px 0px 20px;
     list-style: none;
-    height: 36px;
     display: -webkit-box;
+    display: -moz-box;
     li.tabnav {
       margin-bottom: -2px;
       padding: 10px;
       border-top-left-radius: 6px;
       border-top-right-radius: 6px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #fff;
+      border-bottom-color: $border-color;
       a {
         text-decoration: none;
         font-size: 15px;
@@ -43,10 +48,8 @@ ul {
         }
       }
       &.selected {
-        border-color: rgba(229,229,229,1.0);
+        border-color: $border-color;
         border-bottom-color: #fff;
-        border-style: solid;
-        border-width: 2px;
       }
     }
   }
