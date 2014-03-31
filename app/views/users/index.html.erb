@@ -1,13 +1,16 @@
-<p id="notice"><%= notice %></p>
+<header class="local_header">
+  <ul class="tabnav">
+    <li class="tabnav selected"><%= link_to '利用者一覧', users_path %></li>
+    <li class="tabnav"><%= link_to 'ライセンス一覧', licenses_path %></li>
+  </ul>
+</header>
 
-<h1>利用者一覧</h1>
+<p id="notice"><%= notice %></p>
 
 <table>
   <thead>
     <tr>
       <th><%= User.human_attribute_name 'email' %></th>
-      <th><%= User.human_attribute_name 'status' %></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,8 +21,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= user.status %></td>
-        <td><%= link_to '詳細', user %></td>
         <td><%= link_to '編集', edit_user_path(user) %></td>
         <td><%= link_to '削除', user, method: :delete, data: { confirm: 'よろしいですか？' } %></td>
         <td><%= link_to '招待メールを送信', invite_user_path(user), data: { confirm: 'よろしいですか？' } if user.can_invite? %></td>

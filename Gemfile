@@ -53,4 +53,5 @@ group :development do
   gem 'binding_of_caller'
   gem 'i18n_generators'
   gem 'mocha'
+  gem 'guard-livereload'
 end

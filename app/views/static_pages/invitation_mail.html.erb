@@ -1,3 +1,12 @@
+<header class="local_header">
+  <ul class="tabnav">
+    <li class="tabnav"><%= link_to '利用者一覧', users_path %></li>
+    <li class="tabnav"><%= link_to 'ライセンス一覧', licenses_path %></li>
+    <li class="tabnav selected"><%= link_to 'ヘルプ', users_path %></li>
+  </ul>
+</header>
+
+<div id="help_container">
 <h1>利用者の登録方法</h1>
 <h2>招待メールの受信から割り当ての許可まで</h2>
 
@@ -25,3 +34,4 @@
   <%= image_tag "invitation_mail_5.png" %><br>
   </i>
 </ol>
+</div>
