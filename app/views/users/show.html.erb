@@ -1,3 +1,13 @@
+<header>
+  <div id="tabnav">
+    <ul class="tabnav">
+      <li class="selected"><%= link_to '利用者一覧', users_path %></li>
+      <li><%= link_to 'ライセンス一覧', licenses_path %></li>
+    </ul>
+  </div>
+</header>
+
+<div id="main">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -35,7 +45,7 @@
   <%= @user.its_id_hash %>
 </p>
 
-<h2>ライセンス一覧</h2>
+<strong>割り当て済みライセンス</strong>
 <table>
   <tbody>
     <% @user.licenses.each do |license| %>
@@ -45,8 +55,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br/>
-
-<%= link_to '編集', edit_user_path(@user) %> |
-<%= link_to '戻る', users_path %>
+</div>
