@@ -1,4 +1,5 @@
 $border-color: rgba(229,229,229,1.0);
+$header-color: rgba(63,127,191,1.0);
 
 header {
   margin: 0px;
@@ -23,6 +24,18 @@ header {
     border-bottom-width: 1px;
     border-bottom-color: $border-color;
     height: 39px;
+    a {
+      text-decoration: none;
+      color: $header-color;
+      &:visited {
+        color: $header-color;
+      }
+      &:hover {
+        text-decoration: underline;
+        color: $header-color;
+        background-color: #fff;
+      }
+    }
   }
 }
 
@@ -52,6 +65,7 @@ ul.tabnav {
         color: #000;
       }
       &:hover {
+        text-decoration: underline;
         color: #000;
         background-color: #fff;
       }
