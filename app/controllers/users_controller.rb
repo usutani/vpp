@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   def update
     begin
       if @user.update(user_params)
-        redirect_to @user, notice: '利用者を更新しました'
+        redirect_to users_url, notice: '利用者を更新しました'
       else
         render action: 'edit'
       end
