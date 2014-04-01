@@ -82,4 +82,21 @@ ul.cmdnav {
   clear:both;
   margin: 0px 20px 0px 20px;
   padding: 20px 0px 0px 0px;
+  table {
+    border-collapse: collapse;
+  }
+  table tr td {
+    padding: 5px 10px 5px 10px;
+  }
+  a {
+    text-decoration: underline;
+    color: #000;
+    &:visited {
+      color: #000;
+    }
+    &:hover {
+      color: #000;
+      background-color: #fff;
+    }
+  }
 }
