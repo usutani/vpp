@@ -1,10 +1,25 @@
 <header>
-  <ul class="tabnav">
-    <li class="selected"><%= link_to '利用者一覧', users_path %></li>
-    <li><%= link_to 'ライセンス一覧', licenses_path %></li>
-  </ul>
+  <div id="tabnav">
+    <ul class="tabnav">
+      <li class="selected"><%= link_to '利用者一覧', users_path %></li>
+      <li><%= link_to 'ライセンス一覧', licenses_path %></li>
+    </ul>
+  </div>
+  <div id="cmdnav">
+    <ul class="cmdnav">
+      <li>
+        <div class='sync'>
+          <%= link_to 'VPPストアの情報と同期する', sync_users_path %>
+        </div>
+      </li>
+      <li>
+        <%= link_to '利用者を登録する', new_user_path %>
+      </li>
+    </ul>
+  </div>
 </header>
 
+<div id="main">
 <p id="notice"><%= notice %></p>
 
 <table>
@@ -28,10 +43,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<div class='sync'>
-  <%= link_to 'VPPストアの情報と同期する', sync_users_path %>
 </div>
-<%= link_to '利用者を登録する', new_user_path %>

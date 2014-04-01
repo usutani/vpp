@@ -13,15 +13,21 @@ header {
 }
 
 .container {
-  margin: 16px;
+  margin: 0 auto;
   padding: 0px;
+  width: 640px;
   header {
     margin: 16px 0px 0px 0px;
     border-bottom-color: rgba(229,229,229,1.0);
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: $border-color;
+    height: 39px;
   }
+}
+
+#tabnav {
+  float: left;
 }
 
 ul.tabnav {
@@ -55,4 +61,24 @@ ul.tabnav {
       border-bottom-color: #fff;
     }
   }
+}
+
+#cmdnav {
+  float: right;
+}
+
+ul.cmdnav {
+  margin: 0px;
+  padding: 0px 0px 0px 20px;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  li {
+    padding: 10px;
+  }
+}
+
+#main {
+  clear:both;
+  margin: 0px 20px 0px 20px;
 }
