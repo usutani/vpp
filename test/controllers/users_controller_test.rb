@@ -20,10 +20,9 @@ class UsersControllerTest < ActionController::TestCase
     Vpp::Application.config.vpp_client.stubs(:register_user)
     assert_difference('User.count') do
       post :create, user: { email: "baz@example.com" }
-      #post :create, user: { email: @user.email }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to users_path()
   end
 
   test "create user error" do

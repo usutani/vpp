@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
     begin
       if @user.save
-        redirect_to @user, notice: '利用者を登録しました'
+        redirect_to users_url, notice: '利用者を登録しました'
       else
         render action: 'new'
       end
