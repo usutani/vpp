@@ -1,57 +1,26 @@
+<header>
+  <div id="tabnav">
+    <ul class="tabnav">
+      <li><%= link_to '利用者一覧', users_path %></li>
+      <li class="selected"><%= link_to 'ライセンス一覧', licenses_path %></li>
+    </ul>
+  </div>
+  <div id="cmdnav">
+    <ul class="cmdnav">
+      <li>ライセンスを割り当て中</li>
+    </ul>
+  </div>
+</header>
+
+<div id="main">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong><%= License.human_attribute_name 'license_id' %></strong>
-  <%= @license.license_id %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'user_id' %></strong>
-  <%= @license.user_id %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'adam_id' %></strong>
-  <%= @license.adam_id %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'product_type_id' %></strong>
-  <%= @license.product_type_id %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'its_id_hash' %></strong>
-  <%= @license.its_id_hash %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'pricing_param' %></strong>
-  <%= @license.pricing_param %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'status' %></strong>
-  <%= @license.status %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'product_type_name' %></strong>
-  <%= @license.product_type_name %>
-</p>
-
-<p>
-  <strong><%= License.human_attribute_name 'is_revocable' %></strong>
-  <%= !@license.is_irrevocable %>
-</p>
-
-<p>
-  <strong>利用者ID:</strong>
-  <%= @license.client_user_id_str %>
-</p>
+<%= @license.content.name %>
+<br>
+<br>
 
 <% if @license.status == "Available" %>
-<h2>利用者一覧</h2>
+<strong>割り当て候補</strong>
 <table>
   <tbody>
     <% User.all.each do |user| %>
@@ -63,7 +32,4 @@
   </tbody>
 </table>
 <% end %>
-
-<br/>
-
-<%= link_to '戻る', licenses_path %>
+</div>

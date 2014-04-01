@@ -20,10 +20,9 @@ class UsersControllerTest < ActionController::TestCase
     Vpp::Application.config.vpp_client.stubs(:register_user)
     assert_difference('User.count') do
       post :create, user: { email: "baz@example.com" }
-      #post :create, user: { email: @user.email }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to users_path()
   end
 
   test "create user error" do
@@ -48,7 +47,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should update user" do
     Vpp::Application.config.vpp_client.stubs(:edit_user)
     patch :update, id: @user, user: { client_user_id_str: @user.client_user_id_str, email: @user.email, its_id_hash: @user.its_id_hash, status: @user.status, user_id: @user.user_id }
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to users_path()
   end
 
   test "update user error" do

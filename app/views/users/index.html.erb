@@ -1,10 +1,25 @@
-<header class="local_header">
-  <ul class="tabnav">
-    <li class="tabnav selected"><%= link_to '利用者一覧', users_path %></li>
-    <li class="tabnav"><%= link_to 'ライセンス一覧', licenses_path %></li>
-  </ul>
+<header>
+  <div id="tabnav">
+    <ul class="tabnav">
+      <li class="selected"><%= link_to '利用者一覧', users_path %></li>
+      <li><%= link_to 'ライセンス一覧', licenses_path %></li>
+    </ul>
+  </div>
+  <div id="cmdnav">
+    <ul class="cmdnav">
+      <li>
+        <div class='sync'>
+          <%= link_to 'VPPストアの情報と同期する', sync_users_path %>
+        </div>
+      </li>
+      <li>
+        <%= link_to '利用者を登録する', new_user_path %>
+      </li>
+    </ul>
+  </div>
 </header>
 
+<div id="main">
 <p id="notice"><%= notice %></p>
 
 <table>
@@ -22,16 +37,10 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= link_to '編集', edit_user_path(user) %></td>
-        <td><%= link_to '削除', user, method: :delete, data: { confirm: 'よろしいですか？' } %></td>
+        <td><%= link_to '削除', user, method: :delete, data: { confirm: '利用者を削除します。よろしいですか？' } %></td>
         <td><%= link_to '招待メールを送信', invite_user_path(user), data: { confirm: 'よろしいですか？' } if user.can_invite? %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<div class='sync'>
-  <%= link_to 'VPPストアの情報と同期する', sync_users_path %>
 </div>
-<%= link_to '利用者を登録する', new_user_path %>

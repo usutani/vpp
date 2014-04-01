@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
     begin
       if @user.save
-        redirect_to @user, notice: '利用者を登録しました'
+        redirect_to users_url, notice: '利用者を登録しました'
       else
         render action: 'new'
       end
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   def update
     begin
       if @user.update(user_params)
-        redirect_to @user, notice: '利用者を更新しました'
+        redirect_to users_url, notice: '利用者を更新しました'
       else
         render action: 'edit'
       end
