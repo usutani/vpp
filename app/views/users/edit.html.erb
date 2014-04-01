@@ -1,5 +1,17 @@
-<h1>利用者編集</h1>
+<header>
+  <div id="tabnav">
+    <ul class="tabnav">
+      <li class="selected"><%= link_to '利用者一覧', users_path %></li>
+      <li><%= link_to 'ライセンス一覧', licenses_path %></li>
+    </ul>
+  </div>
+  <div id="cmdnav">
+    <ul class="cmdnav">
+      <li>利用者を編集する</li>
+    </ul>
+  </div>
+</header>
 
+<div id="main">
 <%= render 'form' %>
-
-<%= link_to '戻る', users_path %>
+</div>
