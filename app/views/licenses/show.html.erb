@@ -10,6 +10,10 @@
 <div id="main">
 <p id="notice"><%= notice %></p>
 
+<%= @license.content.name %>
+<br>
+<br>
+
 <% if @license.status == "Available" %>
 <strong>割り当て候補</strong>
 <table>
