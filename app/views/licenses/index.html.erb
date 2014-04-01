@@ -1,8 +1,19 @@
 <header>
-  <ul class="tabnav">
-    <li><%= link_to '利用者一覧', users_path %></li>
-    <li class="selected"><%= link_to 'ライセンス一覧', licenses_path %></li>
-  </ul>
+  <div id="tabnav">
+    <ul class="tabnav">
+      <li><%= link_to '利用者一覧', users_path %></li>
+      <li class="selected"><%= link_to 'ライセンス一覧', licenses_path %></li>
+    </ul>
+  </div>
+  <div id="cmdnav">
+    <ul class="cmdnav">
+      <li>
+        <div class='sync'>
+          <%= link_to 'VPPストアの情報と同期する', sync_licenses_path %>
+        </div>
+      </li>
+    </ul>
+  </div>
 </header>
 
 <p id="notice"><%= notice %></p>
@@ -30,9 +41,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<div class='sync'>
-  <%= link_to 'VPPストアの情報と同期する', sync_licenses_path %>
-</div>
