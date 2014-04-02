@@ -1,11 +1,14 @@
-$border-color: rgba(229,229,229,1.0);
+$fore-color: black;
+$back-color: white;
 $header-color: rgba(63,127,191,1.0);
+$header-back-color: rgba(249,249,249,1.0);
+$border-color: rgba(229,229,229,1.0);
 
 header {
   margin: 0px;
   padding: 0px;
   &.global_header {
-    background-color: rgba(249,249,249,1.0);
+    background-color: $header-back-color;
     border-bottom-color: $border-color;
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -23,7 +26,7 @@ header {
     &:hover {
       text-decoration: underline;
       color: $header-color;
-      background-color: #fff;
+      background-color: $back-color;
     }
   }
 }
@@ -34,7 +37,7 @@ header {
   width: 640px;
   header {
     margin: 16px 0px 0px 0px;
-    border-bottom-color: rgba(229,229,229,1.0);
+    border-bottom-color: $border-color;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: $border-color;
@@ -60,23 +63,23 @@ ul.tabnav {
     border-top-right-radius: 6px;
     border-style: solid;
     border-width: 1px;
-    border-color: #fff;
+    border-color: $back-color;
     border-bottom-color: $border-color;
     a {
       text-decoration: none;
-      color: #000;
+      color: $fore-color;
       &:visited {
-        color: #000;
+        color: $fore-color;
       }
       &:hover {
         text-decoration: underline;
-        color: #000;
-        background-color: #fff;
+        color: $fore-color;
+        background-color: $back-color;
       }
     }
     &.selected {
       border-color: $border-color;
-      border-bottom-color: #fff;
+      border-bottom-color: $back-color;
     }
   }
 }
@@ -108,13 +111,13 @@ ul.cmdnav {
   }
   a {
     text-decoration: underline;
-    color: #000;
+    color: $fore-color;
     &:visited {
-      color: #000;
+      color: $fore-color;
     }
     &:hover {
-      color: #000;
-      background-color: #fff;
+      color: $fore-color;
+      background-color: $back-color;
     }
   }
   div.actions {
