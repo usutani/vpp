@@ -1,6 +1,36 @@
 $fore-color: black;
 $back-color: white;
-$header-color: rgba(63,127,191,1.0);
+
+@mixin obtrusive_a {
+  a {
+    text-decoration: underline;
+    color: $fore-color;
+    &:visited {
+      color: $fore-color;
+    }
+    &:hover {
+      color: $fore-color;
+      background-color: $back-color;
+    }
+  }
+}
+
+@mixin unobtrusive_a($color: $fore-color) {
+  a {
+    text-decoration: none;
+    color: $color;
+    &:visited {
+      color: $color;
+    }
+    &:hover {
+      text-decoration: underline;
+      color: $color;
+      background-color: $back-color;
+    }
+  }
+}
+
+$actions-color: rgba(63,127,191,1.0);
 $header-back-color: rgba(249,249,249,1.0);
 $border-color: rgba(229,229,229,1.0);
 
@@ -16,21 +46,6 @@ header {
   }
 }
 
-@mixin actions_a {
-  a {
-    text-decoration: none;
-    color: $header-color;
-    &:visited {
-      color: $header-color;
-    }
-    &:hover {
-      text-decoration: underline;
-      color: $header-color;
-      background-color: $back-color;
-    }
-  }
-}
-
 .container {
   margin: 0 auto;
   padding: 0px;
@@ -42,7 +57,7 @@ header {
     border-bottom-width: 1px;
     border-bottom-color: $border-color;
     height: 39px;
-    @include actions_a;
+    @include unobtrusive_a($actions-color);
   }
 }
 
@@ -65,18 +80,7 @@ ul.tabnav {
     border-width: 1px;
     border-color: $back-color;
     border-bottom-color: $border-color;
-    a {
-      text-decoration: none;
-      color: $fore-color;
-      &:visited {
-        color: $fore-color;
-      }
-      &:hover {
-        text-decoration: underline;
-        color: $fore-color;
-        background-color: $back-color;
-      }
-    }
+    @include unobtrusive_a;
     &.selected {
       border-color: $border-color;
       border-bottom-color: $back-color;
@@ -109,23 +113,13 @@ ul.cmdnav {
   table tr td {
     padding: 5px 10px 5px 10px;
   }
-  a {
-    text-decoration: underline;
-    color: $fore-color;
-    &:visited {
-      color: $fore-color;
-    }
-    &:hover {
-      color: $fore-color;
-      background-color: $back-color;
-    }
-  }
+  @include obtrusive_a;
   div.actions {
     margin: 20px 0px 10px 0px;
     input {
       margin: 0px 10px 0px 0px;
       height: 31px;
     }
-    @include actions_a;
+    @include unobtrusive_a($actions-color);
   }
 }
