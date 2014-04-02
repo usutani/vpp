@@ -13,6 +13,21 @@ header {
   }
 }
 
+@mixin actions_a {
+  a {
+    text-decoration: none;
+    color: $header-color;
+    &:visited {
+      color: $header-color;
+    }
+    &:hover {
+      text-decoration: underline;
+      color: $header-color;
+      background-color: #fff;
+    }
+  }
+}
+
 .container {
   margin: 0 auto;
   padding: 0px;
@@ -24,18 +39,7 @@ header {
     border-bottom-width: 1px;
     border-bottom-color: $border-color;
     height: 39px;
-    a {
-      text-decoration: none;
-      color: $header-color;
-      &:visited {
-        color: $header-color;
-      }
-      &:hover {
-        text-decoration: underline;
-        color: $header-color;
-        background-color: #fff;
-      }
-    }
+    @include actions_a;
   }
 }
 
@@ -119,17 +123,6 @@ ul.cmdnav {
       margin: 0px 10px 0px 0px;
       height: 31px;
     }
-    a {
-      text-decoration: none;
-      color: $header-color;
-      &:visited {
-        color: $header-color;
-      }
-      &:hover {
-        text-decoration: underline;
-        color: $header-color;
-        background-color: #fff;
-      }
-    }
+    @include actions_a;
   }
 }
