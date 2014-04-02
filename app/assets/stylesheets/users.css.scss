@@ -112,8 +112,11 @@ ul.cmdnav {
   }
   table tr td {
     padding: 5px 10px 5px 10px;
+    @include obtrusive_a;
+    &#unobtrusive {
+      @include unobtrusive_a;
+    }
   }
-  @include obtrusive_a;
   div.actions {
     margin: 20px 0px 10px 0px;
     input {
