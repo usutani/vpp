@@ -48,6 +48,7 @@ gem 'apple_vpp'
 gem 'validates_email_format_of'
 
 group :development do
+  gem 'spring'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
