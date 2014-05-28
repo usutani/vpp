@@ -35,7 +35,7 @@
         <td id="unobtrusive"><%= link_to "#{license.content.try(:name)}", its_jp_app_url(license.adam_id), target: "_blank" %></td>
         <td id="unobtrusive"><%= link_to license.user.email, license.user if license.user.present? %></td>
         <% if license.associated? %>
-          <td><%= link_to '解除', disassociate_path(license), confirm: '割り当てを解除します。よろしいですか？' %></td>
+          <td><%= link_to '解除', disassociate_path(license), data: { confirm: '割り当てを解除します。よろしいですか？' } %></td>
         <% else %>
           <td><%= link_to '割り当て', license %></td>
         <% end %>
