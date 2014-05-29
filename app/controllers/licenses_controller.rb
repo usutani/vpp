@@ -14,6 +14,7 @@ class LicensesController < ApplicationController
       end
       licenses.each do |vl|
         l = License.find_or_initialize_by(license_id: vl[:license_id])
+        vl[:status].downcase!
         l.update(vl)
         l.prepare_content
       end

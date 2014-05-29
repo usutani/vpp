@@ -19,7 +19,7 @@
   <%= @license.content.name %>
 </h1>
 
-<% if @license.status == "Available" %>
+<% if @license.available? %>
 <strong>割り当て候補</strong>
 <table>
   <tbody>

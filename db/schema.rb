@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529025346) do
+ActiveRecord::Schema.define(version: 20140529035750) do
 
   create_table "contents", force: true do |t|
     t.integer  "adam_id"
@@ -29,12 +29,13 @@ ActiveRecord::Schema.define(version: 20140529025346) do
     t.integer  "product_type_id"
     t.string   "its_id_hash"
     t.string   "pricing_param"
-    t.string   "status"
+    t.string   "status_string"
     t.string   "product_type_name"
     t.boolean  "is_irrevocable"
     t.string   "client_user_id_str"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status"
   end
 
   add_index "licenses", ["adam_id"], name: "index_licenses_on_adam_id"
