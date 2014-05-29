@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326100340) do
+ActiveRecord::Schema.define(version: 20140529025346) do
 
   create_table "contents", force: true do |t|
     t.integer  "adam_id"
@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(version: 20140326100340) do
     t.string   "client_user_id_str"
     t.string   "email"
     t.string   "its_id_hash"
-    t.string   "status"
+    t.string   "status_string"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "invite_url"
     t.string   "invite_code"
+    t.integer  "status"
   end
 
   add_index "users", ["client_user_id_str"], name: "index_users_on_client_user_id_str", unique: true
