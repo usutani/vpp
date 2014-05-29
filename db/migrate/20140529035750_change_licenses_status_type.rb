@@ -3,15 +3,13 @@ class ChangeLicensesStatusType < ActiveRecord::Migration
     rename_column :licenses, :status, :status_string
     add_column :licenses, :status, :integer
     License.find_each do |license|
-      license.status = license.status_string.downcase
-      license.save
+      license.update(status: license.status_string.downcase)
     end
   end
 
   def down
     License.find_each do |license|
-      license.status_string = license.status.capitalize
-      license.save
+      license.update(status_string: license.status.capitalize)
     end
     remove_column :licenses, :status
     rename_column :licenses, :status_string, :status
