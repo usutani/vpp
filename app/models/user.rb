@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   validates :email, email_format: {message: ' メールアドレスの形式が不適切です'}
   validates :email, presence: true, uniqueness: true
 
+  enum status: [:registered, :associated, :retired, :deleted]
+
   before_create do
     self.client_user_id_str ||= SecureRandom.uuid
   end
@@ -27,6 +29,6 @@ class User < ActiveRecord::Base
   end
 
   def can_invite?
-    status == "Registered"
+    registered?
   end
 end

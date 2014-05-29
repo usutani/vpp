@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       end
       users.each do |vu|
         user = User.find_or_initialize_by(client_user_id_str: vu[:client_user_id_str])
+        vu[:status].downcase!
         user.update(vu)
       end
       flash[:notice] = 'VPPストア情報と同期しました'
